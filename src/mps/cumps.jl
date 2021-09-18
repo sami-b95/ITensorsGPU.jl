@@ -65,7 +65,7 @@ function productCuMPS(::Type{T}, sites,
   if length(sites) != length(states)
     throw(DimensionMismatch("Number of sites and and initial states don't match"))
   end
-  ivals = [state(sites[n],states[n]) for n=1:length(sites)]
+  ivals = [sites[n] => val(sites[n],states[n]) for n=1:length(sites)]
   return productCuMPS(T, ivals)
 end
 
