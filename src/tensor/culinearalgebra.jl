@@ -41,7 +41,7 @@ function LinearAlgebra.svd(T::CuDenseTensor{ElT,2,IndsT}; kwargs...) where {ElT,
   @timeit "CUSOLVER svd" begin
       MU,MS,MV = CUSOLVER.svd!(aT)
   end
-  #conj!(MV)
+  conj!(MV)
   P = MS.^2
   truncerr, docut, P = truncate!(P;mindim=mindim,
               maxdim=maxdim,
