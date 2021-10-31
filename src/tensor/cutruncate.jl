@@ -56,7 +56,7 @@ function truncate!(P::CuVector{Float64};
         cut_ind = CUDA.CUBLAS.iamax(length(err_rP), err_rP .* flags) - 1
         if cut_ind > 0
             truncerr += sum(rP[cut_ind+1:end])
-            n = min(maxdim, length(P) - cut_ind)
+            n = min(maxdim, cut_ind)
             n = max(n, mindim)
             if scale==0.0
               truncerr = 0.0
@@ -65,7 +65,7 @@ function truncate!(P::CuVector{Float64};
             end
         else # all are above cutoff
             truncerr += sum(rP[1:maxdim])
-            n = min(maxdim, length(P) - cut_ind)
+            n = min(maxdim, length(P))
             n = max(n, mindim)
             if scale==0.0
               truncerr = 0.0
