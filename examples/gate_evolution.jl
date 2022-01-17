@@ -40,6 +40,8 @@ X = cu.(ops(s, [("X", n) for n in 1:N]))
 
 initstate = fill("0", N)
 
+print("siteinds: $(s)\n")
+
 ψ0 = productCuMPS(s, initstate)
 
 gates = [X[n] for n in 1:2:N]

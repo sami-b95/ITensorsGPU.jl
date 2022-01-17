@@ -235,11 +235,11 @@ function _gemm_contract!(CT::DenseTensor{El,NC},
     return C
 end
 
-function _contract!(CT::CuDenseTensor{El,NC},
-                    AT::CuDenseTensor{El,NA},
-                    BT::CuDenseTensor{El,NB},
+function _contract!(CT::CuDenseTensor{El1,NC},
+                    AT::CuDenseTensor{El2,NA},
+                    BT::CuDenseTensor{El3,NB},
                     props::ContractionProperties,
-                    α::Number=one(El),β::Number=zero(El)) where {El,NC,NA,NB}
+                    α::Number=one(Ela),β::Number=zero(El3)) where {El1,El2,El3,NC,NA,NB}
   if ndims(CT) > 12 || ndims(BT) > 12 || ndims(AT) > 12
     return _gemm_contract!(CT, AT, BT, props, α, β)
   end
