@@ -2,6 +2,8 @@
 
 This package is meant to extend the functionality of [ITensors.jl](https://github.com/ITensor/ITensors.jl) to make use of CUDA-enabled GPUs in a way that's simple enough that any user of ITensors.jl can take advantage of. It sits on top of the wonderful [CuArrays.jl](https://github.com/JuliaGPU/CuArrays.jl) package and uses NVIDIA's CUTENSOR library for high-performance tensor operations. It includes a GPU-enabled implementation of the [DMRG-PEPS algorithm](https://arxiv.org/abs/1908.08833).
 
+The package has been observed to function with `CUDA@3.13.1` installed; newer releases of the CUDA packages may cause issues.
+
 ## Getting ITensorsGPU.jl and PEPS up and running
 
 What you'll need:
